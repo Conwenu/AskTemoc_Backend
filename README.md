@@ -81,7 +81,36 @@ curl -X POST "http://127.0.0.1:8000/api/query/" \
 
 ```json
 {
-  "result": "Answer: What is FastAPI?"
+  "answer": "Answer: What is FastAPI?"
 }
 ```
 
+Or if you have successfully installed `Ollama` with the `llama3.1:8b` model
+
+```json
+{
+  "answer": "The capital of China is Beijing."
+}
+```
+
+---
+
+
+### Webscraper Setup
+If you haven’t already installed the **Crawl4AI** library (it should be listed in `requirements.txt`), run:
+
+```bash
+pip install crawl4ai
+```
+
+After installing dependencies, run:
+
+```bash
+crawl4ai-setup
+```
+
+Then verify the installation with:
+
+```bash
+crawl4ai-doctor
+```

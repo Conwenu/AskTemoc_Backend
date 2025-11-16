@@ -1,3 +1,18 @@
 /venv
 
 __pycache__
+
+*_data*.txt
+
+t*.py
+test*.ipynb
+/test_*
+
+/pipe*
+
+/school_crawl_output
+
+*_test.*
+*_test*.*
+
+/crawled_content*/
