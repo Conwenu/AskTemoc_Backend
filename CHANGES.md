@@ -1,3 +1,13 @@
+# Changelog
+
+## Date: November 16, 2025
+
+-   **a7e7157**: Updated README with setup instructions and included new dependencies to requirements.txt
+-   **0e514cb**: Added the html document chunking class
+-   **ab7c5f7**: Added the general web scraping
+
+---
+
 # Implementation Changes Log
 
 ## Date: November 13, 2025
@@ -212,4 +222,3 @@ None required - Tables created automatically on startup
 - **QUICK_START.md** - Setup and quick reference
 - **IMPLEMENTATION_STATUS.md** - Detailed report
 - **Inline code comments** - Well-documented methods
-
