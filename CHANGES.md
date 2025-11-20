@@ -1,5 +1,91 @@
 # Changelog
 
+## Date: November 20, 2025
+
+-   **feat**: Connected ChromaDB RAG pipeline to existing asktemoc.db database with university program data
+-   **feat**: Integrated Ollama LLM with streaming API for real-time responses
+-   **fix**: Resolved import path issues from relative to absolute imports
+
+### Files Modified/Created:
+
+#### Data Ingestion Service
+1.  **app/services/data_ingestion_service.py** (CREATED)
+    -   Implemented data ingestion service for ChromaDB
+    -   Successfully ingested 116 university program files (1483 document chunks)
+    -   Created proper document chunking and embedding generation
+
+#### Environment Configuration
+2.  **app/.env** (CREATED)
+    -   Added ChromaDB persistence configuration
+    -   Configured Ollama model settings (OLLAMA_MODEL, OLLAMA_EMBEDDING_MODEL)
+
+#### RAG Pipeline Updates
+3.  **app/services/retriever_service.py** (MODIFIED)
+    -   Updated to use chroma_db/chroma.sqlite3 persistence path
+    -   Enhanced ChromaDB integration with Ollama embeddings
+4.  **app/services/rag_chain_service.py** (MODIFIED)
+    -   Fixed import paths from relative to absolute imports
+    -   Enhanced RAG chain with proper ChromaDB retriever integration
+5.  **app/services/prompt_service.py** (WORKING)
+    -   Existing prompt template working correctly
+
+#### API Endpoint Updates
+6.  **app/api/endpoints/rag_endpoint.py** (MODIFIED)
+    -   Enhanced to work with real RAG pipeline instead of mock data
+    -   Streams responses from actual Ollama LLM with ChromaDB context
+
+#### Documentation
+7.  **plan.md** (MODIFIED)
+    -   Wiped old plan and documented completed implementation status
+
+## Date: November 19, 2025
+
+-   **feat**: Implemented LangChain RAG pipeline for conversational AI.
+
+### Files Modified/Created:
+
+#### Prompt Template
+1.  **app/services/prompt_service.py** (MODIFIED)
+    -   Defined a structured prompt template for RAG chain using `langchain_core.prompts.PromptTemplate`.
+
+#### Services
+2.  **app/services/retriever_service.py** (CREATED)
+    -   Implemented `RetrieverService` to integrate ChromaDB with `OllamaEmbeddings`.
+3.  **app/services/rag_chain_service.py** (MODIFIED)
+    -   Constructed the core RAG chain using `Ollama` for LLM and configured to output generated text and source documents.
+
+#### API Endpoints
+4.  **app/api/endpoints/rag_endpoint.py** (CREATED)
+    -   Exposed the RAG chain through a new streaming API endpoint `/api/chat`.
+    -   Designed to accept user messages and stream responses, including text and source documents, conforming to frontend requirements.
+
+#### Core Application
+5.  **app/main.py** (MODIFIED)
+    -   Integrated the new `rag_endpoint` router.
+
+#### Testing
+6.  **tests/test_rag_pipeline.py** (CREATED)
+    -   Added comprehensive unit and integration tests for the RAG pipeline.
+    -   Implemented mocking for `rag_chain_service.get_chain` and `Ollama` components to ensure robust and independent testing.
+
+---
+
+### Summary of Changes
+
+-   **RAG Integration Complete**: Successfully connected ChromaDB with existing university program data (116 files, 1483 chunks)
+-   **Ollama Integration**: Configured and tested with llama3.1:8b model for text generation
+-   **Real-time Streaming**: Enhanced `/api/chat` endpoint to stream responses from actual RAG pipeline
+-   **Import Fixes**: Resolved module resolution issues by converting relative to absolute imports
+-   **Data Ingestion**: Created service to ingest and embed all university program requirements
+
+### Dependencies Added
+- `langchain-chroma`
+- `chromadb`
+- `pytest-mock` (for testing)
+- `langchain-community` (for Ollama integrations)
+
+---
+
 ## Date: November 16, 2025
 
 -   **a7e7157**: Updated README with setup instructions and included new dependencies to requirements.txt
